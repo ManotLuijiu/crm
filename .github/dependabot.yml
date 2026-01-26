@@ -1,0 +1,149 @@
+version: 2
+updates:
+  # Python dependencies (pyproject.toml)
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Bangkok"
+    open-pull-requests-limit: 5
+    target-branch: "develop"
+    reviewers:
+      - "ManotLuijiu"
+    labels:
+      - "dependencies"
+      - "python"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    groups:
+      # Communication dependencies
+      communication:
+        patterns:
+          - "twilio*"
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      # Don't update Frappe core dependencies automatically
+      - dependency-name: "frappe"
+      - dependency-name: "erpnext"
+      # Frappe has specific Flask/Werkzeug version requirements
+      - dependency-name: "flask"
+        versions: [">3.0.3"]
+      - dependency-name: "werkzeug"
+        versions: [">3.0.6"]
+
+  # Node.js dependencies (package.json) - Root level
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "09:00"
+      timezone: "Asia/Bangkok"
+    open-pull-requests-limit: 5
+    target-branch: "develop"
+    reviewers:
+      - "ManotLuijiu"
+    labels:
+      - "dependencies"
+      - "javascript"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    ignore:
+      # Don't update these as they might break Frappe compatibility
+      - dependency-name: "jquery"
+      - dependency-name: "bootstrap"
+
+  # Vue frontend dependencies (frontend/package.json)
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "09:00"
+      timezone: "Asia/Bangkok"
+    open-pull-requests-limit: 5
+    target-branch: "develop"
+    reviewers:
+      - "ManotLuijiu"
+    labels:
+      - "dependencies"
+      - "frontend"
+      - "vue"
+    commit-message:
+      prefix: "deps(frontend)"
+      include: "scope"
+    groups:
+      # Vue ecosystem
+      vue-frontend:
+        patterns:
+          - "vue*"
+          - "pinia*"
+          - "vue-router*"
+          - "vuedraggable*"
+          - "@vueuse/*"
+        update-types:
+          - "minor"
+          - "patch"
+      # UI and editor libraries
+      ui-libraries:
+        patterns:
+          - "frappe-ui*"
+          - "@tiptap/*"
+          - "tailwindcss*"
+          - "sortablejs*"
+        update-types:
+          - "minor"
+          - "patch"
+      # Communication SDKs
+      communication-sdk:
+        patterns:
+          - "@twilio/*"
+        update-types:
+          - "minor"
+          - "patch"
+      # Build tools
+      build-tools:
+        patterns:
+          - "vite*"
+          - "@vitejs/*"
+          - "postcss*"
+          - "autoprefixer*"
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      # Skip major version updates for core dependencies
+      - dependency-name: "vue"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "frappe-ui"
+        update-types: ["version-update:semver-major"]
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "monday"
+      time: "10:00"
+      timezone: "Asia/Bangkok"
+    open-pull-requests-limit: 3
+    target-branch: "develop"
+    reviewers:
+      - "ManotLuijiu"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    groups:
+      # Group all GitHub Actions updates together
+      github-actions:
+        patterns:
+          - "*"
