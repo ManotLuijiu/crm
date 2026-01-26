@@ -1,0 +1,2 @@
+# Pre-commit hook for Frappe CRM
+echo "Running pre-commit hooks..."

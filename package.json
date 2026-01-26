@@ -19,14 +19,21 @@
 		"dev": "cd frontend && yarn dev",
 		"build": "cd frontend && yarn build",
 		"upgrade-frappeui": "cd frontend && yarn add frappe-ui@latest && cd ..",
+		"prepare": "husky",
 		"release": "standard-version",
 		"release:patch": "standard-version --release-as patch",
 		"release:minor": "standard-version --release-as minor",
-		"release:major": "standard-version --release-as major"
+		"release:major": "standard-version --release-as major",
+		"release:dry": "standard-version --dry-run",
+		"release:publish": "standard-version && git push --follow-tags origin develop && gh release create v$(node -p \"require('./package.json').version\") --generate-notes",
+		"release:publish:patch": "standard-version --release-as patch && git push --follow-tags origin develop && gh release create v$(node -p \"require('./package.json').version\") --generate-notes",
+		"release:publish:minor": "standard-version --release-as minor && git push --follow-tags origin develop && gh release create v$(node -p \"require('./package.json').version\") --generate-notes",
+		"release:publish:major": "standard-version --release-as major && git push --follow-tags origin develop && gh release create v$(node -p \"require('./package.json').version\") --generate-notes"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^20.3.1",
 		"@commitlint/config-conventional": "^20.3.1",
+		"husky": "^9.1.7",
 		"standard-version": "^9.5.0"
 	}
 }
