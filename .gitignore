@@ -11,3 +11,6 @@ crm/www/crm.html
 build
 
 .vscode
+
+crm/locale/
+crm/translations/
