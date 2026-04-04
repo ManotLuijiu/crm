@@ -128,6 +128,12 @@
         v-model="doc"
         @updateField="updateField"
       />
+      <AIScore
+        v-model="doc"
+        doctype="CRM Deal"
+        @refresh="reloadDocument"
+        @updateField="(field, value) => updateField(field, value)"
+      />
       <div
         v-if="sections.data"
         class="flex flex-1 flex-col justify-between overflow-hidden"
@@ -361,6 +367,7 @@ import Link from '@/components/Controls/Link.vue'
 import Section from '@/components/Section.vue'
 import SidePanelLayout from '@/components/SidePanelLayout.vue'
 import SLASection from '@/components/SLASection.vue'
+import AIScore from '@/components/AIScore.vue'
 import CustomActions from '@/components/CustomActions.vue'
 import { openWebsite, setupCustomizations, copyToClipboard } from '@/utils'
 import { getView } from '@/utils/view'
@@ -789,5 +796,9 @@ function reloadAssignees(data) {
   if (data?.hasOwnProperty('deal_owner')) {
     assignees.reload()
   }
+}
+
+function reloadDocument() {
+  document.reload?.()
 }
 </script>

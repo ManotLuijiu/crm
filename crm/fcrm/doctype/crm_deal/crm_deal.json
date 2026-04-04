@@ -74,6 +74,12 @@
   "last_responded_on",
   "log_tab",
   "status_change_log",
+  "ai_tab",
+  "ai_probability",
+  "ai_confidence",
+  "ai_next_action",
+  "ai_recommendations",
+  "ai_last_analyzed",
   "lost_details_tab",
   "lost_reason",
   "lost_notes"
@@ -269,6 +275,47 @@
    "fieldtype": "Table",
    "label": "Status change log",
    "options": "CRM Status Change Log"
+  },
+  {
+   "fieldname": "ai_tab",
+   "fieldtype": "Tab Break",
+   "label": "AI Analysis"
+  },
+  {
+   "description": "AI-predicted deal close probability (0-100%)",
+   "fieldname": "ai_probability",
+   "fieldtype": "Float",
+   "label": "AI Probability",
+   "precision": 1,
+   "read_only": 1
+  },
+  {
+   "description": "Confidence level of AI prediction (0-1)",
+   "fieldname": "ai_confidence",
+   "fieldtype": "Float",
+   "label": "AI Confidence",
+   "precision": 2,
+   "read_only": 1
+  },
+  {
+   "description": "AI-recommended next action",
+   "fieldname": "ai_next_action",
+   "fieldtype": "Data",
+   "label": "AI Next Action",
+   "read_only": 1
+  },
+  {
+   "description": "Detailed AI recommendations in JSON format",
+   "fieldname": "ai_recommendations",
+   "fieldtype": "Long Text",
+   "label": "AI Recommendations",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ai_last_analyzed",
+   "fieldtype": "Datetime",
+   "label": "Last AI Analysis",
+   "read_only": 1
   },
   {
    "fieldname": "lead_name",

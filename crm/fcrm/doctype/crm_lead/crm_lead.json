@@ -63,6 +63,10 @@
   "last_responded_on",
   "log_tab",
   "status_change_log",
+  "ai_tab",
+  "ai_lead_score",
+  "ai_score_factors",
+  "ai_last_scored",
   "syncing_tab",
   "facebook_lead_id",
   "column_break_ixmu",
@@ -305,6 +309,33 @@
    "fieldtype": "Table",
    "label": "Status change log",
    "options": "CRM Status Change Log"
+  },
+  {
+   "fieldname": "ai_tab",
+   "fieldtype": "Tab Break",
+   "label": "AI Analysis"
+  },
+  {
+   "default": "0",
+   "description": "AI-calculated lead quality score (0-100)",
+   "fieldname": "ai_lead_score",
+   "fieldtype": "Float",
+   "label": "AI Lead Score",
+   "precision": 1,
+   "read_only": 1
+  },
+  {
+   "description": "JSON factors contributing to AI score",
+   "fieldname": "ai_score_factors",
+   "fieldtype": "Small Text",
+   "label": "AI Score Factors",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ai_last_scored",
+   "fieldtype": "Datetime",
+   "label": "Last AI Score Update",
+   "read_only": 1
   },
   {
    "fieldname": "products_tab",

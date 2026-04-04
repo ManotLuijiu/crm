@@ -9,6 +9,14 @@
   "restore_defaults",
   "enable_forecasting",
   "auto_update_expected_deal_value",
+  "ai_tab",
+  "enable_ai",
+  "ai_provider",
+  "ai_api_key",
+  "column_break_ai",
+  "ai_model",
+  "auto_score_leads",
+  "auto_predict_deal_probability",
   "currency_tab",
   "currency",
   "exchange_rate_provider_section",
@@ -27,6 +35,62 @@
    "fieldname": "restore_defaults",
    "fieldtype": "Button",
    "label": "Restore defaults"
+  },
+  {
+   "fieldname": "ai_tab",
+   "fieldtype": "Tab Break",
+   "label": "AI"
+  },
+  {
+   "default": "0",
+   "description": "Enable AI-powered lead scoring, deal probability prediction, and recommendations",
+   "fieldname": "enable_ai",
+   "fieldtype": "Check",
+   "label": "Enable AI Features"
+  },
+  {
+   "fieldname": "ai_provider",
+   "fieldtype": "Section Break",
+   "label": "AI Provider"
+  },
+  {
+   "default": "OpenAI",
+   "fieldname": "ai_provider",
+   "fieldtype": "Select",
+   "label": "AI Provider",
+   "options": "OpenAI\nAnthropic"
+  },
+  {
+   "description": "Your API key for the selected AI provider. Stored securely.",
+   "fieldname": "ai_api_key",
+   "fieldtype": "Password",
+   "label": "API Key",
+   "mandatory_depends_on": "eval:doc.enable_ai"
+  },
+  {
+   "fieldname": "column_break_ai",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "gpt-4o-mini",
+   "description": "Model to use for AI analysis. Smaller models are faster and cheaper.",
+   "fieldname": "ai_model",
+   "fieldtype": "Data",
+   "label": "AI Model"
+  },
+  {
+   "default": "0",
+   "description": "Automatically score leads when they are created or updated",
+   "fieldname": "auto_score_leads",
+   "fieldtype": "Check",
+   "label": "Auto-score Leads"
+  },
+  {
+   "default": "0",
+   "description": "Automatically predict deal probability when deal status changes",
+   "fieldname": "auto_predict_deal_probability",
+   "fieldtype": "Check",
+   "label": "Auto-predict Deal Probability"
   },
   {
    "fieldname": "dropdown_items",

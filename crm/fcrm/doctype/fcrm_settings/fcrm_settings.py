@@ -24,12 +24,19 @@ class FCRMSettings(Document):
 
 		access_key: DF.Data | None
 		all_day_event_notifications: DF.Table[EventNotifications]
+		auto_predict_deal_probability: DF.Check
+		auto_score_leads: DF.Check
 		auto_update_expected_deal_value: DF.Check
+		ai_api_key: DF.Password | None
+		ai_model: DF.Data | None
+		ai_provider: DF.Literal["OpenAI", "Anthropic"] | None
+		ai_tab: DF.Literal["AI"] | None
 		brand_logo: DF.Attach | None
 		brand_name: DF.Data | None
 		currency: DF.Link | None
 		default_calendar_view: DF.Literal["Daily", "Weekly", "Monthly"]
 		dropdown_items: DF.Table[CRMDropdownItem]
+		enable_ai: DF.Check
 		enable_forecasting: DF.Check
 		event_notifications: DF.Table[EventNotifications]
 		favicon: DF.Attach | None
